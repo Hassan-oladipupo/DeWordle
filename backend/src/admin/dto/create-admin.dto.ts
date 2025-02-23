@@ -1,4 +1,4 @@
-import { IsBoolean, IsEmail, IsString } from 'class-validator';
+import { IsEmail, IsOptional, IsString } from 'class-validator';
 export class CreateAdminDto {
   @IsString()
   username: string;
@@ -6,6 +6,10 @@ export class CreateAdminDto {
   @IsEmail()
   email: string;
 
-  @IsBoolean()
-  isSuperAdmin: boolean;
+  @IsString()
+  @IsOptional()
+  role?: string = 'admin';
+
+  @IsString()
+  refreshToken: string;
 }
